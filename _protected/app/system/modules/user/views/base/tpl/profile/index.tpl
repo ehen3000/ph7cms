@@ -331,7 +331,7 @@
     {if $is_relatedprofile_enabled}
         <div class="content" id="related_profile">
         <script>
-            var url_related_profile_block = '{{ $design->url('related-profile','main','index',$id) }}';
+            var url_related_profile_block = "{{ $design->url('related-profile','main','index',$id) }}";
             $('#related_profile').load(url_related_profile_block + ' #related_profile_block');
         </script>
         </div>
@@ -340,7 +340,7 @@
     {if $is_friend_enabled}
         <div class="content" id="friend">
             <script>
-                var url_friend_block = '{{ $design->url('friend','main','index',$username) }}';
+                var url_friend_block = "{{ $design->url('friend','main','index',$username) }}";
                 $('#friend').load(url_friend_block + ' #friend_block');
             </script>
         </div>
@@ -349,7 +349,7 @@
     {if $is_friend_enabled AND $is_logged AND !$is_own_profile}
         <div class="content" id="mutual_friend">
             <script>
-                var url_mutual_friend_block = '{{ $design->url('friend','main','mutual',$username) }}';
+                var url_mutual_friend_block = "{{ $design->url('friend','main','mutual',$username) }}";
                 $('#mutual_friend').load(url_mutual_friend_block + ' #friend_block');
             </script>
         </div>
@@ -358,7 +358,7 @@
     {if $is_picture_enabled}
         <div class="content" id="picture">
             <script>
-                var url_picture_block = '{{ $design->url('picture','main','albums',$username.'?show_add_album_btn='.((int)$is_own_profile)) }}';
+                var url_picture_block = "{{ $design->url('picture','main','albums',$username.'?show_add_album_btn='.((int)$is_own_profile)) }}";
                 $('#picture').load(url_picture_block + ' #picture_block');
             </script>
         </div>
@@ -367,7 +367,7 @@
     {if $is_video_enabled}
         <div class="content" id="video">
             <script>
-                var url_video_block = '{{ $design->url('video','main','albums',$username.'?show_add_album_btn='.((int)$is_own_profile)) }}';
+                var url_video_block = "{{ $design->url('video','main','albums',$username.'?show_add_album_btn='.((int)$is_own_profile)) }}";
                 $('#video').load(url_video_block + ' #video_block');
             </script>
         </div>
@@ -376,7 +376,7 @@
     {if $is_forum_enabled}
         <div class="content" id="forum">
             <script>
-                var url_forum_block = '{{ $design->url('forum','forum','showpostbyprofile',$username) }}';
+                var url_forum_block = "{{ $design->url('forum','forum','showpostbyprofile',$username) }}";
                 $('#forum').load(url_forum_block + ' #forum_block');
             </script>
         </div>
@@ -385,7 +385,7 @@
     {if $is_note_enabled}
         <div class="content" id="note">
             <script>
-                var url_note_block = '{{ $design->url('note','main','author',$username) }}';
+                var url_note_block = "{{ $design->url('note','main','author',$username) }}";
                 $('#note').load(url_note_block + ' #note_block');
             </script>
         </div>
@@ -393,7 +393,7 @@
 
     <div class="content" id="visitor">
         <script>
-            var url_visitor_block = '{{ $design->url('user','visitor','index',$username) }}';
+            var url_visitor_block = "{{ $design->url('user','visitor','index',$username) }}";
             $('#visitor').load(url_visitor_block + ' #visitor_block');
         </script>
     </div>

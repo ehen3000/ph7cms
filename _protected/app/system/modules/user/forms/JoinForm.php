@@ -117,7 +117,8 @@ class JoinForm
                 [
                     GenderTypeUserCore::FEMALE => '👩 ' . t('Woman'),
                     GenderTypeUserCore::MALE => '👨 ' . t('Man'),
-                    GenderTypeUserCore::COUPLE => '💑 ' . t('Couple')
+                    GenderTypeUserCore::COUPLE => '💑 ' . t('Couple'),
+                    GenderTypeUserCore::TVTS => '💑 ' . t('TV/TS')
                 ],
                 ['value' => GenderTypeUserCore::FEMALE, 'required' => 1]
             )
@@ -130,7 +131,8 @@ class JoinForm
                 [
                     GenderTypeUserCore::MALE => '👨 ' . t('Man'),
                     GenderTypeUserCore::FEMALE => '👩 ' . t('Woman'),
-                    GenderTypeUserCore::COUPLE => '💑 ' . t('Couple')
+                    GenderTypeUserCore::COUPLE => '💑 ' . t('Couple'),
+                    GenderTypeUserCore::TVTS => '💑 ' . t('TV/TS')
                 ],
                 ['value' => GenderTypeUserCore::MALE, 'required' => 1]
             )

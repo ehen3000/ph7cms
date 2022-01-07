@@ -16,11 +16,13 @@ final class GenderTypeUserCore
     const FEMALE = 'female';
     const MALE = 'male';
     const COUPLE = 'couple';
+    const TVTS = 'TV/TS';
 
     const GENDERS = [
         self::FEMALE => self::FEMALE,
         self::MALE => self::MALE,
-        self::COUPLE => self::COUPLE
+        self::COUPLE => self::COUPLE,
+        self::TVTS => self::TVTS,
     ];
 
     /**

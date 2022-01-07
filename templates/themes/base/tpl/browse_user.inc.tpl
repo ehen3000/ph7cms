@@ -18,11 +18,11 @@
 
                 {* Sex Icon *}
                 {if $user->sex === GenderTypeUserCore::MALE}
-                    {{ $sex_ico = ' <span class=green>&#9794;</span>' }}
+                    {{ $sex_ico = ` <span class=green>&#9794;</span>` }}
                 {elseif $user->sex === GenderTypeUserCore::FEMALE}
-                    {{ $sex_ico = ' <span class=pink>&#9792;</span>' }}
+                    {{ $sex_ico = ` <span class=pink>&#9792;</span>` }}
                 {else}
-                    {{ $sex_ico = '' }}
+                    {{ $sex_ico = `` }}
                 {/if}
 
                 <figure>

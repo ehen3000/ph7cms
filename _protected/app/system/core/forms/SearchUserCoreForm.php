@@ -72,7 +72,8 @@ class SearchUserCoreForm
                 [
                     GenderTypeUserCore::MALE => t('Man'),
                     GenderTypeUserCore::FEMALE => t('Woman'),
-                    GenderTypeUserCore::COUPLE => t('Couple')
+                    GenderTypeUserCore::COUPLE => t('Couple'),
+                    GenderTypeUserCore::TVTS => t('TV/TS')
                 ],
                 self::$aSexOption
             )
@@ -84,7 +85,8 @@ class SearchUserCoreForm
                 [
                     GenderTypeUserCore::FEMALE => t('Woman'),
                     GenderTypeUserCore::MALE => t('Man'),
-                    GenderTypeUserCore::COUPLE => t('Couple')
+                    GenderTypeUserCore::COUPLE => t('Couple'),
+                    GenderTypeUserCore::TVTS => t('TV/TS')
                 ],
                 self::$aMatchSexOption
             )
@@ -193,7 +195,8 @@ class SearchUserCoreForm
                 [
                     GenderTypeUserCore::MALE => t('Male'),
                     GenderTypeUserCore::FEMALE => t('Woman'),
-                    GenderTypeUserCore::COUPLE => t('Couple')
+                    GenderTypeUserCore::COUPLE => t('Couple'),
+                    GenderTypeUserCore::TVTS => t('TV/TS')
                 ],
                 self::$aSexOption
             )
@@ -205,7 +208,8 @@ class SearchUserCoreForm
                 [
                     GenderTypeUserCore::FEMALE => t('Woman'),
                     GenderTypeUserCore::MALE => t('Male'),
-                    GenderTypeUserCore::COUPLE => t('Couple')
+                    GenderTypeUserCore::COUPLE => t('Couple'),
+                    GenderTypeUserCore::TVTS => t('TV/TS')
                 ],
                 self::$aMatchSexOption
             )
