@@ -166,7 +166,7 @@
             <div class="profile-section">
                 <div class="content" id="picture">
                     <script>
-                        var url_picture_block = '{{ $design->url('picture','main','albums',$username.'?show_add_album_btn='.((int)$is_own_profile)) }}';
+                        var url_picture_block = "{{ $design->url('picture','main','albums',$username.'?show_add_album_btn='.((int)$is_own_profile)) }}";
                         $('#picture').load(url_picture_block + ' #picture_block');
                     </script>
                 </div>
@@ -179,7 +179,7 @@
             <div class="profile-section">
                 <div class="content" id="video">
                     <script>
-                        var url_video_block = '{{ $design->url('video','main','albums',$username.'?show_add_album_btn='.((int)$is_own_profile)) }}';
+                        var url_video_block = "{{ $design->url('video','main','albums',$username.'?show_add_album_btn='.((int)$is_own_profile)) }}";
                         $('#video').load(url_video_block + ' #video_block');
                     </script>
                 </div>
@@ -192,7 +192,7 @@
             <div class="profile-section">
                 <div class="content" id="related_profile">
                     <script>
-                        var url_related_profile_block = '{{ $design->url('related-profile','main','index',$id) }}';
+                        var url_related_profile_block = "{{ $design->url('related-profile','main','index',$id) }}";
                         $('#related_profile').load(url_related_profile_block + ' #related_profile_block');
                     </script>
                 </div>

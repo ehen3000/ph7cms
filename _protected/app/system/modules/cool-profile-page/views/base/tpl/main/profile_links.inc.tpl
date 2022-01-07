@@ -1,12 +1,12 @@
 <div class="row">
     {if $is_im_enabled AND !$is_own_profile}
-        <a class="vs_marg" rel="nofollow" href="{messenger_link}" title="{lang 'Chat'}">
+        <a class="vs_marg" rel="nofollow" href="{messenger_link}">
             <i class="fa fa-comment-o chat"></i>
         </a>
     {/if}
 
     {if $is_lovecalculator_enabled AND !$is_own_profile}
-        <a class="vs_marg" href="{{ $design->url('love-calculator','main','index',$username) }}" title="{lang 'Match'}">
+        <a class="vs_marg" href="{{ $design->url('love-calculator','main','index',$username) }}">
             <i class="fa fa-heart-o heart"></i>
         </a>
     {/if}
@@ -14,7 +14,7 @@
 
 <div class="row">
     {if $is_mail_enabled AND !$is_own_profile}
-        <a class="vs_marg" rel="nofollow" href="{mail_link}" title="{lang 'Send Message'}">
+        <a class="vs_marg" rel="nofollow" href="{mail_link}">
             <li class="fa fa-envelope-o message"></li>
         </a>
     {/if}
