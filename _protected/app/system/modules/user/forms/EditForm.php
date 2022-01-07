@@ -113,6 +113,15 @@ class EditForm
             )
         );
 
+        $oForm->addElement(
+            new Checkbox(
+                t('I\'m asking compensation for my services'),
+                'isProf',
+                [1 => t('Yes'),],
+                ['value' => 0]
+            )
+        );
+        
         if (self::isAdminLoggedAndUserIdExists($oHttpRequest)) {
             // For security reasons, only admins can change the date of birth
             $oForm->addElement(

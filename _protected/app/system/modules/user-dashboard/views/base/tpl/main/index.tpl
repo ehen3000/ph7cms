@@ -53,7 +53,7 @@
             <h2 class="center underline">{lang 'My friends'}</h2>
             <div class="content" id="friend">
                 <script>
-                    var url_friend_block = '{{ $design->url('friend','main','index',$username) }}';
+                    var url_friend_block = "{{ $design->url('friend','main','index',$username) }}";
                     $('#friend').load(url_friend_block + ' #friend_block');
                 </script>
             </div>
@@ -63,7 +63,7 @@
         <h2 class="center underline">{lang 'Visitors who visited my profile'}</h2>
         <div class="content" id="visitor">
             <script>
-                var url_visitor_block = '{{ $design->url('user','visitor','index',$username) }}';
+                var url_visitor_block = "{{ $design->url('user','visitor','index',$username) }}";
                 $('#visitor').load(url_visitor_block + ' #visitor_block');
             </script>
         </div>
@@ -73,7 +73,7 @@
             <h2 class="center underline">{lang 'My photo albums'}</h2>
             <div class="content" id="picture">
                 <script>
-                    var url_picture_block = '{{ $design->url('picture','main','albums',$username) }}';
+                    var url_picture_block = "{{ $design->url('picture','main','albums',$username) }}";
                     $('#picture').load(url_picture_block + ' #picture_block');
                 </script>
             </div>
@@ -84,7 +84,7 @@
             <h2 class="center underline">{lang 'My video albums'}</h2>
             <div class="content" id="video">
                 <script>
-                    var url_video_block = '{{ $design->url('video','main','albums',$username) }}';
+                    var url_video_block = "{{ $design->url('video','main','albums',$username) }}";
                     $('#video').load(url_video_block + ' #video_block');
                 </script>
             </div>
@@ -95,7 +95,7 @@
             <h2 class="center underline">{lang 'My discussions'}</h2>
             <div class="content" id="forum">
                 <script>
-                    var url_forum_block = '{{ $design->url('forum','forum','showpostbyprofile',$username) }}';
+                    var url_forum_block = "{{ $design->url('forum','forum','showpostbyprofile',$username) }}";
                     $('#forum').load(url_forum_block + ' #forum_block');
                 </script>
             </div>
@@ -106,7 +106,7 @@
             <h2 class="center underline">{lang 'My notes'}</h2>
             <div class="content" id="note">
                 <script>
-                    var url_note_block = '{{ $design->url('note','main','author',$username) }}';
+                    var url_note_block = "{{ $design->url('note','main','author',$username) }}";
                     $('#note').load(url_note_block + ' #note_block');
                 </script>
             </div>
