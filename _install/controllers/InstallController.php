@@ -1,14 +1,14 @@
 <?php
 /**
- * @title            InstallController Class
- *
  * @author           Pierre-Henry Soria <hello@ph7cms.com>
- * @copyright        (c) 2012-2021, Pierre-Henry Soria. All Rights Reserved.
+ * @copyright        (c) 2012-2022, Pierre-Henry Soria. All Rights Reserved.
  * @license          MIT License; See PH7.LICENSE.txt and PH7.COPYRIGHT.txt in the root directory.
  * @package          PH7 / Install / Controller
  */
 
 namespace PH7;
+
+use PDOException;
 
 defined('PH7') or exit('Restricted access');
 
@@ -301,7 +301,7 @@ class InstallController extends Controller
                                     redirect(PH7_URL_SLUG_INSTALL . 'config_site');
                                 }
                             }
-                        } catch (\PDOException $oE) {
+                        } catch (PDOException $oE) {
                             $aErrors[] = $LANG['database_error'] . escape($oE->getMessage());
                         }
                     } else {
@@ -451,7 +451,7 @@ class InstallController extends Controller
                                                         $_SESSION['step5'] = 1;
 
                                                         redirect(PH7_URL_SLUG_INSTALL . 'niche');
-                                                    } catch (\PDOException $oE) {
+                                                    } catch (PDOException $oE) {
                                                         $aErrors[] = $LANG['database_error'] . escape($oE->getMessage());
                                                     }
                                                 } else {
@@ -551,7 +551,7 @@ class InstallController extends Controller
                             $this->updateSettings($aSettingUpdate);
 
                             $this->updateTheme($DB, $sTheme);
-                        } catch (\PDOException $oE) {
+                        } catch (PDOException $oE) {
                             $aErrors[] = $LANG['database_error'] . escape($oE->getMessage());
                         }
                     }
@@ -594,8 +594,7 @@ class InstallController extends Controller
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['confirm_remove_install'])) {
                 remove_install_dir();
-                clearstatcache(
-                ); // We remove the files status cache as the "_install" folder doesn't exist anymore by now.
+                clearstatcache(); // We remove the files status cache as the "_install" folder doesn't exist anymore by now.
                 exit(header('Location: ' . PH7_URL_ROOT));
             }
 
