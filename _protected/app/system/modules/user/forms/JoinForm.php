@@ -72,6 +72,15 @@ class JoinForm
         $oForm->addElement(new \PFBC\Element\Password(t('Your Password'), 'password', ['placeholder' => t('Password'), 'id' => 'password', 'onkeyup' => 'checkPassword(this.value)', 'onblur' => 'CValid(this.value, this.id)', 'required' => 1, 'validation' => new Password]));
         $oForm->addElement(new HTMLExternal('<span class="input_error password"></span>'));
 
+        $oForm->addElement(new Checkbox(
+            t(' '),
+            'isProf', 
+            [
+                1 => 'I\'m asking compensation for my services '
+            ], 
+            ['id' => 'isProf']
+        ));
+               
         if (DbConfig::getSetting('isCaptchaUserSignup')) {
             $oForm->addElement(new CCaptcha(t('Captcha'), 'captcha', ['placeholder' => t('Captcha'), 'id' => 'ccaptcha', 'onkeyup' => 'CValid(this.value, this.id)', 'description' => t('Enter the below code:')]));
             $oForm->addElement(new HTMLExternal('<span class="input_error ccaptcha"></span>'));
@@ -115,28 +124,47 @@ class JoinForm
                 t('I am a'),
                 'sex',
                 [
-                    GenderTypeUserCore::FEMALE => '👩 ' . t('Woman'),
-                    GenderTypeUserCore::MALE => '👨 ' . t('Man'),
-                    GenderTypeUserCore::COUPLE => '💑 ' . t('Couple'),
-                    GenderTypeUserCore::TVTS => '💑 ' . t('TV/TS')
+                    GenderTypeUserCore::FEMALE => ' ' . t('Woman'),
+                    GenderTypeUserCore::MALE => ' ' . t('Man'),
+                    GenderTypeUserCore::COUPLE => ' ' . t('Couple'),
+                    GenderTypeUserCore::TVTS => ' ' . t('TV/TS')
                 ],
                 ['value' => GenderTypeUserCore::FEMALE, 'required' => 1]
             )
         );
 
-        $oForm->addElement(
-            new Checkbox(
-                t('Looking for a'),
-                'match_sex',
-                [
-                    GenderTypeUserCore::MALE => '👨 ' . t('Man'),
-                    GenderTypeUserCore::FEMALE => '👩 ' . t('Woman'),
-                    GenderTypeUserCore::COUPLE => '💑 ' . t('Couple'),
-                    GenderTypeUserCore::TVTS => '💑 ' . t('TV/TS')
-                ],
-                ['value' => GenderTypeUserCore::MALE, 'required' => 1]
-            )
-        );
+        if ($_SESSION['pH7eb196_isProf'] == 0) {
+            $oForm->addElement(
+                new Checkbox(
+                    t('Looking for a'),
+                    'match_sex',
+                    [
+                        GenderTypeUserCore::MALE => ' ' . t('Man'),
+                        GenderTypeUserCore::FEMALE => ' ' . t('Woman'),
+                        GenderTypeUserCore::COUPLE => ' ' . t('Couple'),
+                        GenderTypeUserCore::TVTS => ' ' . t('TV/TS')
+                    ],
+                    ['value' => GenderTypeUserCore::MALE, 'required' => 1]
+                )
+            );
+
+        } else {
+            $oForm->addElement(new HTMLExternal('<div class="col-lg-4 col-md-4 col-sm-4">'));
+            $oForm->addElement(new Checkbox(t(' '), 'suck', [1 => 'suck'], ['id' => 'suck', 'onblur' => 'CValid(this.checked, this.id)']));
+            $oForm->addElement(new Checkbox(t(' '), 'fuck', [1 => 'fuck'], ['id' => 'fuck', 'onblur' => 'CValid(this.checked, this.id)']));
+            $oForm->addElement(new HTMLExternal('</div>'));
+    
+            $oForm->addElement(new HTMLExternal('<div class="col-lg-4 col-md-4 col-sm-4">'));
+            $oForm->addElement(new Checkbox(t(' '), 'squirt', [1 => 'squirt'], ['id' => 'squirt', 'onblur' => 'CValid(this.checked, this.id)']));
+            $oForm->addElement(new Checkbox(t(' '), 'toys', [1 => 'toys'], ['id' => 'toys', 'onblur' => 'CValid(this.checked, this.id)']));
+            $oForm->addElement(new HTMLExternal('</div>'));
+    
+            $oForm->addElement(new HTMLExternal('<div class="col-lg-4 col-md-4 col-sm-4">'));
+            $oForm->addElement(new Checkbox(t(' '), 'anal', [1 => 'anal'], ['id' => 'anal', 'onblur' => 'CValid(this.checked, this.id)']));
+            $oForm->addElement(new Checkbox(t(' '), 'fetish', [1 => 'fetish'], ['id' => 'fetish', 'onblur' => 'CValid(this.checked, this.id)']));
+            $oForm->addElement(new HTMLExternal('</div>'));
+    
+        }
 
         self::generateBirthDateField($oForm);
 
@@ -178,7 +206,7 @@ class JoinForm
 
         $oForm->addElement(new Textarea(t('About Me 🤗'), 'description', ['id' => 'str_description', 'description' => t('Describe yourself in a few words. Your description should be at least 20 characters long.'), 'onblur' => 'CValid(this.value,this.id,20,4000)', 'validation' => new Str(20, 4000), 'required' => 1]));
         $oForm->addElement(new HTMLExternal('<span class="input_error str_description"></span>'));
-
+        
         $oForm->addElement(new Button(t('Next'), 'submit', ['icon' => 'seek-next']));
         $oForm->addElement(new HTMLExternal('<script src="' . PH7_URL_STATIC . PH7_JS . 'validate.js"></script>'));
         $oForm->render();

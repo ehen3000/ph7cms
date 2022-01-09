@@ -1,1 +1,1 @@
-UPDATE [DB_PREFIX]members SET sex = :sex, matchSex = :match_sex, birthDate = :birth_date WHERE profileId = :profile_id LIMIT 1;
+UPDATE [DB_PREFIX]members SET sex = :sex, matchSex = :match_sex, birthDate = :birth_date, suck = :suck, fuck = :fuck, anal = :anal, fetish = :fetish, toys = :toys, squirt = :squirt WHERE profileId = :profile_id LIMIT 1;

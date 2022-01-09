@@ -109,19 +109,28 @@ class EditForm
                     GenderTypeUserCore::COUPLE => t('Couple'),
                     GenderTypeUserCore::TVTS => t('TV/TS')
                 ],
-                ['value' => Form::getVal($oUser->matchSex), 'required' => 1]
+                [
+                    'value' => Form::getVal($oUser->matchSex), 
+                    'required' => 1
+                ]
             )
         );
 
         $oForm->addElement(
-            new Checkbox(
-                t('I\'m asking compensation for my services'),
+            new Radio(
+                t('I\'m asking compensation for my services'), 
                 'isProf',
-                [1 => t('Yes'),],
-                ['value' => 0]
+                [
+                    1 => t('Enabled'), 
+                    0 => t('Disabled')
+                ],
+                [
+                    'value' => $oUser->isProf ? $oUser->isProf : 0, 
+                    'required' => 1
+                ]
             )
         );
-        
+
         if (self::isAdminLoggedAndUserIdExists($oHttpRequest)) {
             // For security reasons, only admins can change the date of birth
             $oForm->addElement(

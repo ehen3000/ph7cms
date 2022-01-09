@@ -41,6 +41,11 @@ class JoinFormProcess extends Form
     public function step1()
     {
         $iAffId = (int)(new Cookie)->get(AffiliateCore::COOKIE_NAME);
+        if ($this->httpRequest->post('isProf')) {
+            $isProf = 1;
+        } else {
+            $isProf = 0;
+        }
 
         $aData = [
             'email' => $this->httpRequest->post('mail'),
@@ -52,8 +57,10 @@ class JoinFormProcess extends Form
             'current_date' => (new CDateTime)->get()->dateTime('Y-m-d H:i:s'),
             'is_active' => $this->iActiveType,
             'group_id' => (int)DbConfig::getSetting('defaultMembershipGroupId'),
-            'affiliated_id' => $iAffId
+            'affiliated_id' => $iAffId,
+            'isProf' => $isProf
         ];
+        print_r($aData);
 
         // Need to use Http::NO_CLEAN since password might contains special character like "<" and will otherwise be converted to HTML entities
         $sPassword = $this->httpRequest->post('password', Http::NO_CLEAN);
@@ -83,7 +90,8 @@ class JoinFormProcess extends Form
                 'mail_step1' => $aData['email'],
                 'username' => $aData['username'],
                 'first_name' => $aData['first_name'],
-                'profile_id' => $iProfileId
+                'profile_id' => $iProfileId,
+                'isProf' => $aData['isProf'],
             ];
             $this->session->set($aSessData);
 
@@ -98,13 +106,55 @@ class JoinFormProcess extends Form
         $iProfileId = $this->oUserModel->getId($this->session->get('mail_step1'));
         $sBirthDate = $this->getUserBirthDateValue();
 
+        if (!$this->httpRequest->post('squirt')) {
+            $squirt = 0;
+        } else {
+            $squirt = 1;
+        }
+
+        if (!$this->httpRequest->post('fetish')) {
+            $fetish = 0;
+        } else {
+            $fetish = 1;
+        }
+
+        if (!$this->httpRequest->post('fuck')) {
+            $fuck = 0;
+        } else {
+            $fuck = 1;
+        }
+
+        if (!$this->httpRequest->post('suck')) {
+            $suck = 0;
+        } else {
+            $suck = 1;
+        }
+
+        if (!$this->httpRequest->post('anal')) {
+            $anal = 0;
+        } else {
+            $anal = 1;
+        }
+
+        if (!$this->httpRequest->post('toys')) {
+            $toys = 0;
+        } else {
+            $toys = 1;
+        }
+
         // WARNING FOT "matchSex" FIELD: Be careful, you should use the Http::NO_CLEAN constant, otherwise Http::post() method removes the special tags
         // and damages the SET function SQL for entry into the database
         $aData1 = [
             'sex' => $this->httpRequest->post('sex'),
             'match_sex' => Form::setVal($this->httpRequest->post('match_sex', Http::NO_CLEAN)),
             'birth_date' => $sBirthDate,
-            'profile_id' => $iProfileId
+            'profile_id' => $iProfileId,
+            'squirt' => $squirt,
+            'toys' => $toys,
+            'anal' => $anal,
+            'suck' => $suck,
+            'fetish' => $fetish,
+            'fuck' => $fuck,
         ];
 
         $aData2 = [

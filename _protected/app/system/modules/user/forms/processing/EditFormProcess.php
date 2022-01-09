@@ -53,6 +53,11 @@ class EditFormProcess extends Form
             }
         }
 
+        if (!$this->str->equals($this->httpRequest->post('isProf')[0], $oUser->isProf)) {
+            
+            $oUserModel->updateProfile('isProf', $this->httpRequest->post('isProf')[0], $iProfileId);
+        }
+
         // WARNING: Be careful, you should use the Http::NO_CLEAN constant, otherwise Http::post() method removes the special tags
         // and damages the SET function SQL for entry into the database.
         if (!$this->str->equals($this->httpRequest->post('match_sex', Http::NO_CLEAN), $oUser->matchSex)) {
