@@ -4,13 +4,11 @@
  * @desc             Loading Framework Class of pH7CMS.
  *
  * @author           Pierre-Henry Soria <hello@ph7cms.com>
- * @copyright        (c) 2012-2022, Pierre-Henry Soria. All Rights Reserved.
+ * @copyright        (c) 2012-2019, Pierre-Henry Soria. All Rights Reserved.
  * @license          MIT License; See PH7.LICENSE.txt and PH7.COPYRIGHT.txt in the root directory.
  * @package          PH7 / Framework / Loader
- * @version          2.0
+ * @version          1.9
  */
-
-declare(strict_types=1);
 
 namespace PH7\Framework\Loader;
 
@@ -47,7 +45,7 @@ final class Autoloader
      *
      * @return void
      */
-    public function init(): void
+    public function init()
     {
         // Specify the extensions that may be loaded
         spl_autoload_extensions('.class.php, .interface.php, .trait.php');
@@ -55,15 +53,24 @@ final class Autoloader
         // Register the loader methods
         spl_autoload_register([__CLASS__, 'loadClass']);
 
-        // Load Composer libraries (GeoIp2, Swift, Stripe, ...)
+        // Include Composer libraries (GeoIp2, Swift, Stripe, ...)
         $this->loadComposerLoader();
     }
 
-    private function loadClass(string $sClass): void
+    /**
+     * Autoload Classes.
+     *
+     * @param string $sClass
+     *
+     * @return void
+     */
+    private function loadClass($sClass)
     {
         $sClass = $this->clean($sClass);
 
         switch (true) {
+            /***** To include the libraries *****/
+
             // To include Classes
             case is_file(PH7_PATH_FRAMEWORK . $sClass . '.class.php'):
                 $sFile = PH7_PATH_FRAMEWORK . $sClass . '.class.php';
@@ -101,15 +108,19 @@ final class Autoloader
      *
      * @return string The class cleaned.
      */
-    private function clean(string $sClass): string
+    private function clean($sClass)
     {
         return str_replace([self::FRAMEWORK_NAMESPACE, '\\', '//'], ['/', '/', ''], $sClass);
     }
 
-    private function loadComposerLoader(): void
+    /**
+     * @return void
+     */
+    private function loadComposerLoader()
     {
         if (!is_file(self::COMPOSER_AUTOLOAD_FULL_PATH)) {
             $this->showComposerNotInstalledPage();
+            exit;
         }
 
         require_once self::COMPOSER_AUTOLOAD_FULL_PATH;
@@ -120,7 +131,7 @@ final class Autoloader
      *
      * @return void
      */
-    private function showComposerNotInstalledPage(): void
+    private function showComposerNotInstalledPage()
     {
         $sInstallComposerLink = self::INFO_INSTALL_COMPOSER_LINK;
         $sDownloadLink = self::DOWNLOAD_SOFTWARE_LINK;
@@ -131,6 +142,5 @@ final class Autoloader
 Please <strong><a href="{$sInstallComposerLink}" target="_blank" rel="noopener">read those instructions</a></strong> to install the third-party libraries or download pH7CMS from <strong><a href="{$sDownloadLink}" target="_blank" rel="noopener">Sourceforge</a></strong> if you don't understand how to download the third-party libraries separately.</p>'
 HTML;
         echo html_body('You need to run Composer', $sMsg);
-        exit;
     }
 }

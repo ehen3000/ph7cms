@@ -115,9 +115,11 @@ class ChangePasswordCoreFormProcess extends Form
     }
 
     /**
+     * @return UserCoreModel
+     *
      * @internal PH7\UserCoreModel::login() method of the UserCoreModel works only for "user" and "affiliate" module.
      */
-    private function getPasswordModel(): string
+    private function getPasswordModel()
     {
         $sClassName = $this->bIsAdminModule ? AdminModel::class : UserCoreModel::class;
 

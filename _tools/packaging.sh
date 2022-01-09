@@ -31,15 +31,12 @@ function run() {
 
             # Install dependencies for production only (without dev packages)
             php ./composer.phar install --no-dev
-            php ./composer.phar install --working-dir _install --no-dev
 
             # Update the libraries to their latest versions
             # php ./composer.phar update --no-dev
-            # php ./composer.phar update --working-dir _install --no-dev
 
             # Optimize Composer
             php ./composer.phar dump-autoload --optimize --no-dev
-            php ./composer.phar dump-autoload --working-dir _install --optimize --no-dev
 
             ## Caches
             # public
@@ -60,9 +57,8 @@ function run() {
             rm ./.gitattributes
             rm ./.scrutinizer.yml
             rm ./.travis.yml
-            rm ./composer.phar
             rm ./composer.lock
-            rm ./_install/composer.lock
+            rm ./composer.phar
             rm ./phpunit.phar
             rm ./phpunit.xml.dist
             rm ./_protected/app/configs/config.ini
@@ -96,7 +92,6 @@ function run() {
             rm -rf ./_protected/.quarantine/
             rm -rf ./_protected/.tmb/
             # Composer cache folder
-            rm -rf ./_install/vendor/cache/
             rm -rf ./_protected/vendor/cache/
 
             ## Permissions
