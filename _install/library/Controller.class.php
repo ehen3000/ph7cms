@@ -50,9 +50,11 @@ abstract class Controller implements Controllable
     const DEFAULT_LANG = 'en';
     const DEFAULT_THEME = 'base';
 
-    protected Smarty $oView;
+    /** @var Smarty */
+    protected $oView;
 
-    protected string $sCurrentLang;
+    /** @var string */
+    protected $sCurrentLang;
 
     public function __construct()
     {
@@ -74,6 +76,7 @@ abstract class Controller implements Controllable
         $this->oView->setTemplateDir(PH7_ROOT_INSTALL . 'views/' . self::DEFAULT_THEME);
         $this->oView->setCompileDir(PH7_ROOT_INSTALL . 'data/caches/smarty_compile');
         $this->oView->setCacheDir(PH7_ROOT_INSTALL . 'data/caches/smarty_cache');
+        $this->oView->setPluginsDir(PH7_ROOT_INSTALL . 'library/Smarty/plugins');
 
         // Smarty Cache
         $this->oView->setCaching(Smarty::CACHING_OFF);

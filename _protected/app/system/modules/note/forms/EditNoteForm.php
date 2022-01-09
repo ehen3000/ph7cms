@@ -16,7 +16,6 @@ use PFBC\Element\HTMLExternal;
 use PFBC\Element\Radio;
 use PFBC\Element\Textarea;
 use PFBC\Element\Textbox;
-use PH7\Datatype\Type;
 use PH7\Framework\Mvc\Request\Http;
 use PH7\Framework\Mvc\Router\Uri;
 use PH7\Framework\Security\CSRF\Token;
@@ -41,7 +40,7 @@ class EditNoteForm
         // Generate edit form post of the note
         $oNoteModel = new NoteModel;
 
-        $iNoteId = (new Http)->get('id', Type::INTEGER);
+        $iNoteId = (new Http)->get('id', 'int');
         $iProfileId = (new Session)->get('member_id');
         $sPostId = $oNoteModel->getPostId($iNoteId);
         $oPost = $oNoteModel->readPost($sPostId, $iProfileId);

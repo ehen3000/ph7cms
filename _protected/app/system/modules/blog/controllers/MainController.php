@@ -8,7 +8,6 @@
 
 namespace PH7;
 
-use PH7\Datatype\Type;
 use PH7\Framework\Analytics\Statistic;
 use PH7\Framework\Cache\Cache;
 use PH7\Framework\Http\Http;
@@ -128,7 +127,7 @@ class MainController extends Controller
     {
         $sCategory = str_replace('-', ' ', $this->httpRequest->get('name'));
         $sOrder = $this->httpRequest->get('order');
-        $iSort = $this->httpRequest->get('sort', Type::INTEGER);
+        $iSort = $this->httpRequest->get('sort', 'int');
 
         $this->iTotalBlogs = $this->oBlogModel->category(
             $sCategory,
@@ -179,7 +178,7 @@ class MainController extends Controller
     {
         $sKeywords = $this->httpRequest->get('looking');
         $sOrder = $this->httpRequest->get('order');
-        $iSort = $this->httpRequest->get('sort', Type::INTEGER);
+        $iSort = $this->httpRequest->get('sort', 'int');
 
         $this->iTotalBlogs = $this->oBlogModel->search(
             $sKeywords,

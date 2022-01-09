@@ -8,7 +8,6 @@
 
 namespace PH7;
 
-use PH7\Datatype\Type;
 use PH7\Framework\Layout\Html\Design;
 use PH7\Framework\Layout\Html\Security;
 use PH7\Framework\Mvc\Router\Uri;
@@ -280,8 +279,8 @@ class MainController extends Controller
     {
         $sKeywords = $this->httpRequest->get('looking');
         $sOrder = $this->httpRequest->get('order');
-        $iSort = $this->httpRequest->get('sort',Type::INTEGER);
-        $iType = $this->httpRequest->get('where', Type::INTEGER);
+        $iSort = $this->httpRequest->get('sort', 'int');
+        $iType = $this->httpRequest->get('where', 'int');
 
         $this->iTotalMails = $this->oMailModel->search(
             $sKeywords,
@@ -326,7 +325,7 @@ class MainController extends Controller
 
     public function setTrash()
     {
-        $iId = $this->httpRequest->post('id', Type::INTEGER);
+        $iId = $this->httpRequest->post('id', 'int');
 
         $this->bStatus = $this->oMailModel->setTo(
             $this->iProfileId,
@@ -380,7 +379,7 @@ class MainController extends Controller
     {
         $this->bStatus = $this->oMailModel->setTo(
             $this->iProfileId,
-            $this->httpRequest->post('id', Type::INTEGER),
+            $this->httpRequest->post('id', 'int'),
             MailModel::RESTORE_MODE
         );
 
@@ -425,7 +424,7 @@ class MainController extends Controller
 
     public function setDelete()
     {
-        $iId = $this->httpRequest->post('id', Type::INTEGER);
+        $iId = $this->httpRequest->post('id', 'int');
 
         if ($this->bAdminLogged) {
             $this->bStatus = $this->oMailModel->adminDeleteMsg($iId);
