@@ -23,7 +23,7 @@ phpcs.xml
 # PHPUnit Coverage folder
 coverage
 
-# PHPStorm IDE folder
+# PHPStorm/Jetbrains IDE folder
 .idea
 
 ## Gettext ##
